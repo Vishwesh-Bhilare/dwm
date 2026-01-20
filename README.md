@@ -1,9 +1,6 @@
-## dwm - dynamic window manager - bread's build
-![my build](bread_dwm.png)
+## dwm - dynamic window manager - vishy's build
+![my build](vishy.jpeg)
 comes with no guarantees or warranties <sub>(this means things may not work as expected, or at all)</sub> :^)
-
-note: I'd highly recommend setting up your own build! using mine or anyone else's is a starting point, but patching dwm manually not only allows for precise customization, but it will also allow you to learn how your WM works.
-a great way to test build changes without refreshing/restarting your running WM is with [Xephyr](https://wiki.archlinux.org/title/Xephyr), a nested X server that runs as an application.
 
 ## patches applied:
 some occasional modification here and there;
@@ -28,7 +25,7 @@ some occasional modification here and there;
 
 ## installation, setup:
 ```
-git clone https://github.com/BreadOnPenguins/dwm
+git clone https://github.com/Vishwesh-Bhilare/dwm
 cd dwm
 sudo make clean install
 ```
@@ -77,5 +74,3 @@ Alternatively, if you prefer a different color-setting method, follow the instru
 I use [slock](https://tools.suckless.org/slock/) for a lockscreen (build will be uploaded eventually), activated via keybind.
 
 My config has a few glyphs used cosmetically; for those to render properly, install a [font with extra glyphs](https://www.nerdfonts.com/#home).
-
-#### The [GNU Quilt](https://savannah.nongnu.org/projects/quilt/quilt/) system (used by Debian to manage patches in source packages) can be used to easily manage, apply, and reverse suckless software patches, and [this guide](https://codeberg.org/mok0/suckless-patches) (including ```suckless-patches.py```) can help download and prepare patches for use with Quilt. Thanks to [mok0](https://github.com/BreadOnPenguins/dwm/issues/1) for sharing!
