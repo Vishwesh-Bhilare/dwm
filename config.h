@@ -28,7 +28,7 @@ static unsigned int snap            = 32;       /* snap pixel */
 static const unsigned int gappih    = 20;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 20;       /* vert inner gap between windows */
 static const unsigned int gappoh    = 20;       /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov    = 30;       /* vert outer gap between windows and screen edge */
+static const unsigned int gappov    = 20;       /* vert outer gap between windows and screen edge */
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static int showbar                  = 1;        /* 0 means no bar */
@@ -45,10 +45,22 @@ static const char *fonts[]          = { "monospace:size=9", "Hack Nerd Font Mono
 /* default colors used if xrdb is not loaded */
 static char normbgcolor[]           = "#232b3b";
 static char normbordercolor[]       = "#4c566a";
-static char normfgcolor[]           = "#737EC5";
-static char selfgcolor[]            = "#31339e";
-static char selbordercolor[]        = "#737EC5";
-static char selbgcolor[]            = "#737EC5";
+static char normfgcolor[]           = "#7F8B94";
+static char selfgcolor[]            = "#c1cbc2";
+static char selbordercolor[]        = "#7F8B94";
+static char selbgcolor[]            = "#7F8B94";
+
+// static char *colors[][3] = {
+//        /*               fg           bg           border   */
+// 		[SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
+// 		[SchemeSel]  = { selbgcolor,  selfgcolor,  selbordercolor  },
+// 		/* for bar --> {text, background, null} */
+// 		[SchemeStatus]  = { normfgcolor, normbgcolor,  normbgcolor  }, /* status R */
+// 		[SchemeTagsSel]  = { normfgcolor, normbgcolor,  normbgcolor  }, /* tag L selected */
+// 		[SchemeTagsNorm]  = { selbordercolor, normbgcolor,  normbgcolor  }, /* tag L unselected */
+// 		[SchemeInfoSel]  = { normfgcolor, normbgcolor,  normbgcolor  }, /* info M selected */
+// 		[SchemeInfoNorm]  = { normfgcolor, normbgcolor,  normbgcolor  }, /* info M unselected */
+// };
 
 static char *colors[][3] = {
        /*               fg           bg           border   */
@@ -56,11 +68,10 @@ static char *colors[][3] = {
 		[SchemeSel]  = { selbgcolor,  selfgcolor,  selbordercolor  },
 		/* for bar --> {text, background, null} */
 		[SchemeStatus]  = { normfgcolor, normbgcolor,  normbgcolor  }, /* status R */
-		/* [SchemeTagsSel]  = { normfgcolor, normbgcolor,  normbgcolor  }, tag L selected */
-		[SchemeTagsSel]  = { "#232b3b", "#737EC5",  "#737EC5"  },
+		[SchemeTagsSel]  = { normbgcolor, normfgcolor,  normbgcolor  }, /* tag L selected (swapped) */
 		[SchemeTagsNorm]  = { selbordercolor, normbgcolor,  normbgcolor  }, /* tag L unselected */
-		[SchemeInfoSel] = { "#0A090C", "#737EC5", "#737EC5" }, /* info M selected */
-		[SchemeInfoNorm]  = { normfgcolor, normbgcolor,  normbgcolor  }, /* info M unselected */
+		[SchemeInfoSel]  = { normbgcolor, normfgcolor,  normbgcolor  }, /* title – swapped */
+		[SchemeInfoNorm] = { normbgcolor, normfgcolor,  normbgcolor  }, /* layout – swapped */
 };
 
 
@@ -78,7 +89,7 @@ static const Rule rules[] = {
 	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ "fzfmenu", NULL,     "fzf", 	0,         1,          1,           1,        -1 }, /* xev */
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
-	{ "cs2",     NULL,     NULL,           0,         1,          0,           0,        -1 }, /* CS2 - floating with no border */
+	/* { "cs2",     NULL,     NULL,           0,         1,          0,           0,        -1 }, CS2 - floating with no border */
 };
 
 #include "vanitygaps.c"
@@ -232,9 +243,9 @@ static const Key keys[] = {
 /* application bindings */
 	{ MODKEY,			XK_m,          spawn,      {.v = (const char*[]){ "kitty", "-e", "termusic", NULL } } },
 	{ MODKEY,			XK_w,          spawn,      {.v = (const char*[]){ BROWSER, NULL } } },
-	/* { MODKEY,			XK_f,          spawn,      {.v = (const char*[]){ "kitty", "-e", "fff", NULL } } }, */
-	{ MODKEY,			XK_n,          spawn,      {.v = (const char*[]){ "kitty", "-e", "nvim", NULL } } },
-	{ MODKEY|ShiftMask,	XK_h,          spawn,      {.v = (const char*[]){ "kitty", "-e", "htop", NULL } } },
+	{ MODKEY,			XK_o,          spawn,      {.v = (const char*[]){ "kitty", "-e", "ranger", NULL } } },
+	{ MODKEY,			XK_n,          spawn,      {.v = (const char*[]){ "st", "-e", "nvim", NULL } } },
+	{ MODKEY|ShiftMask,	XK_h,          spawn,      {.v = (const char*[]){ "st", "-e", "htop", NULL } } },
 	{ MODKEY,			XK_p,          spawn,      {.v = (const char*[]){ "darktable", NULL } } },
 	
 	/* Screenshot - use array syntax */
