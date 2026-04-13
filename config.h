@@ -39,8 +39,13 @@ static const int showstatus         = 1;        /* 0 means no status bar */
 static const int showfloating       = 0;        /* 0 means no floating indicator */
 static int topbar                   = 1;        /* 0 means bottom bar */
 
-static char dmenufont[]             = "monospace:size=9";
-static const char *fonts[]          = { "monospace:size=9", "Hack Nerd Font Mono:size=14", "NotoColorEmoji:pixelsize=12:antialias=true:autohint=true"  };
+static char dmenufont[]             = "Inter:size=10";
+static const char *fonts[] 			= {
+										"Inter:size=10",
+										"monospace:size=9", 
+										"Hack Nerd Font Mono:size=14",
+										"NotoColorEmoji:size=12"
+};
 
 /* default colors used if xrdb is not loaded */
 static char normbgcolor[]           = "#232b3b";
@@ -243,29 +248,45 @@ static const Key keys[] = {
 /* application bindings */
 	{ MODKEY,			XK_m,          spawn,      {.v = (const char*[]){ "kitty", "-e", "termusic", NULL } } },
 	{ MODKEY,			XK_w,          spawn,      {.v = (const char*[]){ BROWSER, NULL } } },
-	{ MODKEY,			XK_o,          spawn,      {.v = (const char*[]){ "kitty", "-e", "ranger", NULL } } },
-	{ MODKEY,			XK_n,          spawn,      {.v = (const char*[]){ "st", "-e", "nvim", NULL } } },
-	{ MODKEY|ShiftMask,	XK_h,          spawn,      {.v = (const char*[]){ "st", "-e", "htop", NULL } } },
-	{ MODKEY,			XK_p,          spawn,      {.v = (const char*[]){ "darktable", NULL } } },
+	{ MODKEY,			XK_o,          spawn,      {.v = (const char*[]){ "kitty", "-e", "yazi", NULL } } },
+	{ MODKEY,			XK_n,          spawn,      {.v = (const char*[]){ "kitty", "-e", "nvim", NULL } } },
+	{ MODKEY|ShiftMask,	XK_b,          spawn,      {.v = (const char*[]){ "kitty", "-e", "btop", NULL } } },
+	/* { MODKEY,			XK_p,          spawn,      {.v = (const char*[]){ "darktable", NULL } } }, */
 	
 	/* Screenshot - use array syntax */
 	{ MODKEY|ShiftMask, XK_p, spawn, {.v = (const char*[]){ "/bin/sh", "-c", "maim -s | xclip -selection clipboard -t image/png", NULL } } },
 
 /* script launch bindings */
-	{ MODKEY|ShiftMask,		XK_n,      spawn,       {.v = (const char*[]){ "dmenunotes", NULL } } },
-	{ MODKEY,				XK_v,      spawn,       {.v = (const char*[]){ "cliphist", "sel", NULL } } },
-	{ MODKEY,				XK_c,      spawn,       {.v = (const char*[]){ "cliphist", "add", NULL } } },
-	{ MODKEY|ShiftMask,		XK_a,      spawn,       {.v = (const char*[]){ "dmenuvids", NULL } } },
-	{ MODKEY|ControlMask,	XK_a,      spawn,       {.v = (const char*[]){ "dmenuaudioswitch", NULL } } },
-	{ MODKEY|ShiftMask,		XK_d,      spawn,       {.v = (const char*[]){ "rip", NULL } } },
-	{ MODKEY,				XK_r,      spawn,       {.v = (const char*[]){ "rec", NULL } } },
-	{ MODKEY|ShiftMask,		XK_grave,  spawn,       {.v = (const char*[]){ "define", NULL } } },
-	{ MODKEY|ShiftMask,		XK_w,      spawn,       {.v = (const char*[]){ "wallpapermenu", NULL } } },
-	{ MODKEY,				XK_F1,     spawn,       SHCMD("screenshot") },
-	{ MODKEY|ShiftMask,		XK_F1,     spawn,       SHCMD("screenshot color") },
-	{ MODKEY,				XK_F2,     spawn,       {.v = (const char*[]){ "vb", NULL } } },
-	{ MODKEY|ShiftMask,		XK_F2,     spawn,       {.v = (const char*[]){ "dmenutemp", NULL } } },
-	{ MODKEY,				XK_F3,     spawn,       {.v = (const char*[]){ "phototransfer", NULL } } },
+	// { MODKEY|ShiftMask,		XK_n,      spawn,       {.v = (const char*[]){ "notes", NULL } } },
+	// { MODKEY,				XK_v,      spawn,       {.v = (const char*[]){ "cliphist", "sel", NULL } } },
+	// { MODKEY,				XK_c,      spawn,       {.v = (const char*[]){ "cliphist", "add", NULL } } },
+	// { MODKEY|ShiftMask,		XK_a,      spawn,       {.v = (const char*[]){ "dmenuvids", NULL } } },
+	// { MODKEY|ControlMask,	XK_a,      spawn,       {.v = (const char*[]){ "audioswitch", NULL } } },
+	// { MODKEY|ShiftMask,		XK_d,      spawn,       {.v = (const char*[]){ "rip", NULL } } },
+	// { MODKEY,				XK_r,      spawn,       {.v = (const char*[]){ "record", NULL } } },
+	// { MODKEY|ShiftMask,		XK_grave,  spawn,       {.v = (const char*[]){ "define", NULL } } },
+	// { MODKEY|ShiftMask,		XK_w,      spawn,       {.v = (const char*[]){ "wallpapermenu", NULL } } },
+	// { MODKEY,				XK_F1,     spawn,       SHCMD("screenshot") },
+	// { MODKEY|ShiftMask,		XK_F1,     spawn,       SHCMD("screenshot color") },
+	// { MODKEY,				XK_F2,     spawn,       {.v = (const char*[]){ "vb", NULL } } },
+	// { MODKEY|ShiftMask,		XK_F2,     spawn,       {.v = (const char*[]){ "temp", NULL } } },
+	// { MODKEY,				XK_F3,     spawn,       {.v = (const char*[]){ "phototransfer", NULL } } },
+	/* script launch bindings */
+{ MODKEY|ShiftMask,		XK_n,      spawn,       {.v = (const char*[]){ "/home/vishy/dwm-src/scripts/shortcuts-menus/notes", NULL } } },
+{ MODKEY,				XK_v,      spawn,       {.v = (const char*[]){ "/usr/bin/cliphist", "sel", NULL } } },
+{ MODKEY,				XK_c,      spawn,       {.v = (const char*[]){ "/usr/bin/cliphist", "add", NULL } } },
+{ MODKEY|ShiftMask,		XK_a,      spawn,       {.v = (const char*[]){ "/home/vishy/dwm-src/scripts/shortcuts-menus/dmenuvids", NULL } } },  // Note: dmenuvids doesn't exist
+{ MODKEY|ControlMask,	XK_a,      spawn,       {.v = (const char*[]){ "/home/vishy/dwm-src/scripts/audio-video/audioswitch", NULL } } },
+{ MODKEY|ShiftMask,		XK_d,      spawn,       {.v = (const char*[]){ "/home/vishy/dwm-src/scripts/audio-video/rip", NULL } } },  // rip doesn't exist
+{ MODKEY,				XK_r,      spawn,       {.v = (const char*[]){ "/home/vishy/dwm-src/scripts/audio-video/record", NULL } } },
+{ MODKEY|ShiftMask,		XK_grave,  spawn,       {.v = (const char*[]){ "/home/vishy/dwm-src/scripts/shortcuts-menus/define", NULL } } },
+{ MODKEY|ShiftMask,		XK_w,      spawn,       {.v = (const char*[]){ "/home/vishy/dwm-src/scripts/images-photos-wallpapers/wallpapermenu", NULL } } },
+{ MODKEY,				XK_F1,     spawn,       SHCMD("/home/vishy/dwm-src/scripts/images-photos-wallpapers/screenshot") },
+{ MODKEY|ShiftMask,		XK_F1,     spawn,       SHCMD("/home/vishy/dwm-src/scripts/images-photos-wallpapers/screenshot color") },
+{ MODKEY,				XK_F2,     spawn,       {.v = (const char*[]){ "/home/vishy/dwm-src/scripts/shell/vb", NULL } } },  // vb doesn't exist
+{ MODKEY|ShiftMask,		XK_F2,     spawn,       {.v = (const char*[]){ "/home/vishy/dwm-src/scripts/shortcuts-menus/temp", NULL } } },
+{ MODKEY,				XK_F3,     spawn,       {.v = (const char*[]){ "/home/vishy/dwm-src/scripts/images-photos-wallpapers/phototransfer", NULL } } },
+
 
 	/* Kill picom */
 	{ MODKEY|ControlMask|ShiftMask, XK_p, spawn, {.v = (const char*[]){ "pkill", "-9", "picom", NULL } } },
