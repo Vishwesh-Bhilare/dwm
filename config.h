@@ -93,6 +93,7 @@ static const Rule rules[] = {
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
 	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ "fzfmenu", NULL,     "fzf", 	0,         1,          1,           1,        -1 }, /* xev */
+	{ "kitty-wallpaper", NULL, NULL,       0,         1,          1,           1,        -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 	/* { "cs2",     NULL,     NULL,           0,         1,          0,           0,        -1 }, CS2 - floating with no border */
 };
@@ -285,6 +286,7 @@ static const Key keys[] = {
 { MODKEY|ShiftMask,		XK_F1,     spawn,       SHCMD("/home/vishy/dwm-src/scripts/images-photos-wallpapers/screenshot color") },
 { MODKEY,				XK_F2,     spawn,       {.v = (const char*[]){ "/home/vishy/dwm-src/scripts/shell/vb", NULL } } },  // vb doesn't exist
 { MODKEY|ShiftMask,		XK_F2,     spawn,       {.v = (const char*[]){ "/home/vishy/dwm-src/scripts/shortcuts-menus/temp", NULL } } },
+{ MODKEY|ShiftMask,     XK_w,      spawn,       {.v = (const char*[]){ "/home/vishy/dwm-src/scripts/wallpaper-launcher.sh", NULL } } },
 { MODKEY,				XK_F3,     spawn,       {.v = (const char*[]){ "/home/vishy/dwm-src/scripts/images-photos-wallpapers/phototransfer", NULL } } },
 
 
